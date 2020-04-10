@@ -7,48 +7,56 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>Weather Dashboard</title>
 </head>
 
 <body>
 
-    <header class="bg-dark text-light" style="text-align: center;">
+    <header class="bg-prime text-light" style="text-align: center; background-color:crimson;">
         <h1>Weather Dashboard</h1>
     </header>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3 bg-light border rounded-lg" style="padding: 1.8rem;">
-                <h4>Search City: </h4>
+            <div class="col-md-3 bg-light border rounded-lg" style="padding: 1.5rem;">
+                <h4>Search for a City: </h4>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Type City" aria-label="Type City"
+                    <input type="text" class="form-control" placeholder="Search City" aria-label="Search City"
                         aria-describedby="button-addon2" id="search-term">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary search-button" type="button"
+                        <button class="btn btn-outline-primary search-button" type="button"
                             id="button-addon2">Search</button>
                     </div>
-                    <ul id="city-list" style="list-style: none;"></ul>
                 </div>
-                <div class="col-sm-1 mr-n5"></div>
-                <div class="main-content col-md-8 border rounded-lg" style="padding: 1.8rem;">
-                    <div class="jumbotron" id="current-day-forecast"
-                        style="padding-top: 1.8rem; padding-bottom: 1.8rem">
-                    </div>
-                    <hr>
-                    <div class="jumbotron" style="padding-top: 1.8rem; padding-bottom: 1.8rem">
-                        <div class="row" id="five-day-forecast"></div>
-                    </div>
+                <ul id="cities" style="list-style: none;"></ul>
+            </div>
+            <div class="col-sm-1"></div>
+            <title style="text-align: center;">Current Weather:</title>
+            <div class="main-content col-md-8 border rounded-lg" style="padding: 1.5rem;">
+                <div class="jumbotron" id="current-day-forecast" style="padding-top: 1.5rem; padding-bottom: 1.5rem">
+                </div>
+                <hr>
+                <title style="text-align: center;">Five Day Forecast:</title>
+                <div class="jumbotron" style="padding-top: 1.5rem; padding-bottom: 1.5rem">
+
+                    <div class="row" id="five-day-forecast"></div>
                 </div>
             </div>
         </div>
+
+
+
+    </div>
+
     </div>
 
 
     </div>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-    <script src="javascript/script.js"></script>
+
+
 </body>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
 
 </html>
