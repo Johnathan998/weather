@@ -40,3 +40,27 @@ function buildCurrentWeatherCardHist() {
     $(weatherCard).append(windspeed);
     $("#current-day-forecast").append(weatherCard);
 };
+
+$(".search-button").on("click", function (event) {
+    event.preventDefault();
+    $("#current-day-forecast").empty();
+    $("#five-day-forecast").empty();
+    var searchHistory = $("#search-term").val().trim();
+    if (searchHistory === "") {
+        return;
+    };
+    cities.push(searchHistory)
+    localStorage.setItem("cities", JSON.stringify(cities));
+    queryURL = buildQueryUrl();
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (data) {
+        function buildCurrentWeatherCard() {
+            $(weatherCard).append(cityDate);
+            $(weatherCard).append(weathericon)
+            $(weatherCard).append(temp);
+            $(weatherCard).append(humidity);
+            $(weatherCard).append(windspeed);
+            $("#current-day-forecast").append(weatherCard);
+        }
