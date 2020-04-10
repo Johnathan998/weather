@@ -9,3 +9,10 @@ function buildQueryUrl() {
     queryParams.units = "imperial"
     return queryURL + $.param(queryParams);
 }
+function buildForecastQueryUrl() {
+    var forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?";
+    var forecastQueryParams = { "appid": "7a0417bb28fd390f6e702d0fcf1d9a1a" };
+    forecastParams.id = data.id;
+    forecastQueryParams.units = "imperial";
+    return forecastQueryURL + $.param(forecastQueryParams);
+}
