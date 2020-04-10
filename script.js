@@ -32,3 +32,11 @@ function init() {
     }
     renderCities();
 }
+function buildCurrentWeatherCardHist() {
+    $(weatherCard).append(cityDate);
+    $(weatherCard).append(weathericon)
+    $(weatherCard).append(temp);
+    $(weatherCard).append(humidity);
+    $(weatherCard).append(windspeed);
+    $("#current-day-forecast").append(weatherCard);
+};
