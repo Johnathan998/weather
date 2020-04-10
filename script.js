@@ -64,3 +64,19 @@ $(".search-button").on("click", function (event) {
             $(weatherCard).append(windspeed);
             $("#current-day-forecast").append(weatherCard);
         }
+        var date = moment().format("MMM Do YY");
+        var weatherData = data;
+        var currentWeatherIcon = data.weather[0].icon;
+        var currentWeatherIconEl = "https://openweathermap.org/img/wn/" + currentWeatherIcon + "@2x.png";
+        var weathericon = $("<img/>", {
+            id: "weather-icon",
+            src: currentWeatherIconEl,
+            width: 80
+        });
+        var currentTemp = Math.floor(weatherData.main.temp);
+        var weatherCard = $("<div>").addClass("card weather-card current-day-weather");
+        var cityDate = $("<h5>").addClass("card-title").text(weatherData.name + " " + "(" + date + ")");
+        var temp = $("<p>").addClass("card-text").text("Temp: " + currentTemp + " F");
+        var humidity = $("<p>").addClass("card-text text-nowrap").text("Humidity: " + weatherData.main.humidity + " %");
+        var windspeed = $("<p>").addClass("card-text").text("Windspeed: " + weatherData.wind.speed + " mph");
+        buildCurrentWeatherCard();
