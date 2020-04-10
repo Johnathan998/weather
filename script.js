@@ -80,3 +80,10 @@ $(".search-button").on("click", function (event) {
         var humidity = $("<p>").addClass("card-text text-nowrap").text("Humidity: " + weatherData.main.humidity + " %");
         var windspeed = $("<p>").addClass("card-text").text("Windspeed: " + weatherData.wind.speed + " mph");
         buildCurrentWeatherCard();
+        function buildForecastQueryUrl() {
+            var forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?";
+            var forecastQueryParams = { "appid": "7a0417bb28fd390f6e702d0fcf1d9a1a" };
+            forecastQueryParams.id = data.id;
+            forecastQueryParams.units = "imperial";
+            return forecastQueryURL + $.param(forecastQueryParams);
+        }
