@@ -24,3 +24,11 @@ function buildQueryUrlHist() {
     queryParamsHist.units = "imperial"
     return queryURLHist + $.param(queryParamsHist);
 };
+function init() {
+    $("#cities").empty();
+    var storedCities = JSON.parse(localStorage.getItem("cities"));
+    if (storedCities !== null) {
+        cities = storedCities;
+    }
+    renderCities();
+}
