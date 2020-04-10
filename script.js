@@ -192,3 +192,18 @@ $(".search-button").on("click", function (event) {
                 forecastQueryParams.units = "imperial";
                 return forecastQueryURL + $.param(forecastQueryParams);
             }
+            forecastQueryURL = buildForecastQueryUrlHist();
+            $.ajax({
+                url: forecastQueryURL,
+                method: "GET"
+            }).then(function (fiveData) {
+                fiveDayList = fiveData.list;
+                for (var i = 4; i < fiveDayList.length; i += 8) {
+                    var day = fiveDayList[i];
+                    var dayIcon = day.weather[0].icon;
+                    var dayWeatherIcon = "https://openweathermap.org/img/wn/" + dayIcon + ".png";
+                    var dayIconEl = $("<img/>", {
+                        id: "weather-icon",
+                        src: dayWeatherIcon,
+                        width: 50
+                    })
