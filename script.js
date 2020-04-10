@@ -128,3 +128,28 @@ $(".search-button").on("click", function (event) {
         $("#search-term").val(null)
         init();
     });
+
+    function renderCities() {
+        if (cities.length > 5) {
+            cities.shift();
+        }
+
+        for (var i = 0; i < cities.length; i++) {
+            var city = cities[i];
+            var li = $("<li>")
+            var button = $("<button>");
+            button.text(city);
+            button.attr("data-index", i);
+            button.attr("style", "width: 100%")
+            button.addClass("btn shadow-box btn-primary hist-button");
+            li.append(button);
+            $("#cities").prepend(li);
+            $("#cities").prepend("<br>");
+        }
+    }
+
+    $("#cities").on("click", "button", function () {
+        $("#current-day-forecast").empty();
+        $("#five-day-forecast").empty();
+        cityName = $(this).text();
+        queryURLHist = buildQueryUrlHist();
