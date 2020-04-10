@@ -153,3 +153,18 @@ $(".search-button").on("click", function (event) {
         $("#five-day-forecast").empty();
         cityName = $(this).text();
         queryURLHist = buildQueryUrlHist();
+        $.ajax({
+            url: queryURLHist,
+            method: "GET"
+        }).then(function (data) {
+
+            weatherData = data;
+
+            currentWeatherIcon = data.weather[0].icon;
+            date = moment().format("MMM Do YY");
+            currentWeatherIconEl = "https://openweathermap.org/img/wn/" + currentWeatherIcon + "@2x.png";
+            weathericon = $("<img/>", {
+                id: "weather-icon",
+                src: currentWeatherIconEl,
+                width: 75
+            });
