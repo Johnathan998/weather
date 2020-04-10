@@ -168,3 +168,12 @@ $(".search-button").on("click", function (event) {
                 src: currentWeatherIconEl,
                 width: 75
             });
+            currentTemp = Math.floor(weatherData.main.temp);
+            weatherCard = $("<div>").addClass("card weather-card current-day-weather");
+            cityDate = $("<h5>").addClass("card-title").text(weatherData.name + " " + "(" + date + ")");
+            temp = $("<p>").addClass("card-text").text("Temp: " + currentTemp + " F");
+            humidity = $("<p>").addClass("card-text text-nowrap").text("Humidity: " + weatherData.main.humidity + " %");
+            windspeed = $("<p>").addClass("card-text").text("Windspeed: " + weatherData.wind.speed + " mph");
+            var uvIndex;
+            var uvQueryURL = "https://api.openweathermap.org/data/2.5/uvi?" + "lat=" + data.coord.lat + "&lon=" + data.coord.lon + "&appid=0d2a570544db7d02e47387057bd868ca"
+            buildCurrentWeatherCardHist();
