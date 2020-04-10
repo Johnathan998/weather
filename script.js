@@ -177,3 +177,18 @@ $(".search-button").on("click", function (event) {
             var uvIndex;
             var uvQueryURL = "https://api.openweathermap.org/data/2.5/uvi?" + "lat=" + data.coord.lat + "&lon=" + data.coord.lon + "&appid=0d2a570544db7d02e47387057bd868ca"
             buildCurrentWeatherCardHist();
+            $.ajax({
+                url: uvQueryURL,
+                method: "GET"
+            }).then(function (response) {
+                uvIndex = response.value;
+                uvIndexTag = $("<p>").text("UV Index: " + uvIndex);
+                $(".current-day-weather").append(uvIndexTag);
+            })
+            function buildForecastQueryUrlHist() {
+                var forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?";
+                var forecastQueryParams = { "appid": "0d2a570544db7d02e47387057bd868ca" };
+                forecastQueryParams.id = data.id;
+                forecastQueryParams.units = "imperial";
+                return forecastQueryURL + $.param(forecastQueryParams);
+            }
