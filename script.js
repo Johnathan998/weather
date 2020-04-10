@@ -87,3 +87,44 @@ $(".search-button").on("click", function (event) {
             forecastQueryParams.units = "imperial";
             return forecastQueryURL + $.param(forecastQueryParams);
         }
+        forecastQueryURL = buildForecastQueryUrl();
+        $.ajax({
+            url: forecastQueryURL,
+            method: "GET"
+        }).then(function (fiveData) {
+            fiveDayList = fiveData.list;
+            for (var i = 4; i < fiveDayList.length; i += 8) {
+                var day = fiveDayList[i];
+                var dayIcon = day.weather[0].icon;
+                var dayWeatherIcon = "https://openweathermap.org/img/wn/" + dayIcon + ".png";
+                var dayIconEl = $("<img/>", {
+                    id: "weather-icon",
+                    src: dayWeatherIcon,
+                    width: 50
+                })
+                var dayTempEl = Math.floor(day.main.temp);
+                var dayCard = $("<div>").addClass("card weather-card col-lg bg-primary text-white mr-md-2 mb-3");
+                var dayDate = $("<h5>").attr("style", "font-size:100%").addClass("card-title text-nowrap").text(moment().add(1, 'days').format('L'));
+                var dayTemp = $("<p>").addClass("card-text").text("Temp: " + dayTempEl + " F");
+                var dayHum = $("<p>").addClass("card-text text-nowrap").text("Humidity: " + day.main.humidity);
+                $(dayCard).append(dayDate);
+                $(dayCard).append(dayIconEl)
+                $(dayCard).append(dayTemp);
+                $(dayCard).append(dayHum);
+                $("#five-day-forecast").append(dayCard);
+            }
+        })
+        var uvIndex;
+        var uvQueryURL = "https://api.openweathermap.org/data/2.5/uvi?" + "lat=" + data.coord.lat + "&lon=" + data.coord.lon + "&appid=0d2a570544db7d02e47387057bd868ca"
+        buildCurrentWeatherCard();
+        $.ajax({
+            url: uvQueryURL,
+            method: "GET"
+        }).then(function (response) {
+            uvIndex = response.value
+            uvIndexTag = $("<p>").text("UV Index: " + uvIndex)
+            $(".current-day-weather").append(uvIndexTag)
+        })
+        $("#search-term").val(null)
+        init();
+    });
