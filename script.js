@@ -16,3 +16,11 @@ function buildForecastQueryUrl() {
     forecastQueryParams.units = "imperial";
     return forecastQueryURL + $.param(forecastQueryParams);
 }
+init();
+function buildQueryUrlHist() {
+    var queryURLHist = "https://api.openweathermap.org/data/2.5/weather?";
+    var queryParamsHist = { "appid": "0d2a570544db7d02e47387057bd868ca" };
+    queryParamsHist.q = cityName;
+    queryParamsHist.units = "imperial"
+    return queryURLHist + $.param(queryParamsHist);
+};
